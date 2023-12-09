@@ -8,12 +8,100 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="shortcut icon" href="./images/logo.png">
     <link rel="stylesheet" href="style.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: #fcfcfc;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 600px;
+  height: 260px;
+  background-color: #ffffff;
+  padding: 10px 30px 40px;
+}
+
+.card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  
+}
+
+.drop_box {
+  margin: 10px 0;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 3px dotted #a3a3a3;
+  border-radius: 5px;
+}
+
+.drop_box h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #2e2e2e;
+}
+
+.drop_box p {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: #a3a3a3;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: #005af0;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  transition: 0.3s;
+}
+
+.btn:hover{
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #005af0;
+  padding: 10px 20px;
+  border: none;
+  outline: 1px solid #010101;
+}
+.form input {
+  margin: 10px 0;
+  width: 100%;
+  background-color: #e2e2e2;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+}
+
+    </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="Logo copy.png" alt="">
-            <h2>U<span class="danger">M</span>S</h2>
+        <div class="logo" title="University Management System">
+            <img src="Logo copy.png" alt="logo" class="brand__logo" >
+            <h2>Placement<span class="danger">Portal</span></h2>
         </div>
         <div class="navbar">
             <a href="index.html">
@@ -47,29 +135,49 @@
         
     </header>
 
-    <main style="margin: 0;">
-        <div class="timetable active" id="timetable">
-            <div>
-                <span id="prevDay">&lt;</span>
-                <h2>Today's Timetable</h2>
-                <span id="nextDay">&gt;</span>
+    <body>
+        <div class="container">
+          <div class="card">
+            <h3>Upload Resumes</h3>
+            <div class="drop_box">
+              <header></header>
+              <p>Files Supported: PDF, TEXT, DOC, DOCX</p>
+              <input type="file" accept=".doc,.docx,.pdf" id="fileID" style="display:none;">
+              <label for="fileID" class="btn">Choose File</label>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Time</th>
-                        <th>Room No.</th>
-                        <th>Subject</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <p id="successMessage" style="display: none; color: green;">File uploaded successfully!</p>
+          </div>
         </div>
-    </main>
-
+      </body>
+      
+      <script>
+        const dropArea = document.querySelector(".drop_box");
+       const input = dropArea.querySelector("input");
+       const successMessage = document.getElementById("successMessage");
+       
+       input.addEventListener("change", function () {
+         const file = this.files[0];
+         if (file) {
+           // You can handle file upload logic here (send the file to a server if needed)
+           // For demonstration, show the success message
+           successMessage.style.display = "block";
+       
+           // For demo purposes, hide the message after 3 seconds (adjust as needed)
+           setTimeout(() => {
+             successMessage.style.display = "none";
+           }, 3000); // Hides the message after 3 seconds (adjust as needed)
+         }
+       });
+       
+       
+       
+       
+       
+       
+       </script>
+       
+       <script src="timeTable.js"></script>
+       <script src="app.js"></script>
 </body>
 
-<script src="timeTable.js"></script>
-<script src="app.js"></script>
 </html>
